@@ -29,7 +29,7 @@ public:
     DS4(string local);
 
     int buttonPos(int button);
-    void DS4UpdateState();
+    bool DS4UpdateState();
     bool checkIfPressed(int button);
 
     ~DS4();

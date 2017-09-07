@@ -7,10 +7,9 @@ using namespace std;
 
 
 int main(){
-
     DS4 control;
-    while(1){
-        control.DS4UpdateState();
+
+    while(control.DS4UpdateState()){        
         if(control.checkIfPressed(CROSS))
             cout << "CROSS pressed\n";
         if(control.checkIfPressed(CIRCLE))
@@ -33,8 +32,8 @@ int main(){
             cout << "OPTIONS pressed\n";
         if(control.checkIfPressed(PSN))
             cout << "PSN pressed\n";
-
+        cout << "presses\n";
     }
 
-	return 0;
+    cout << "saiu\n";
 }

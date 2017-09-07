@@ -1,7 +1,7 @@
 #include "DS4.h"
 
 DS4::DS4(){
-    rc.open("/dev/input/by-id/usb-Sony_Interactive_Entertainment_Wireless_Controller-if03-joystick");
+    rc.open("/dev/input/js0");
     if(rc == NULL)
         cerr << "Erro ao abrir evento do controle\n";
 
@@ -33,14 +33,15 @@ int DS4::buttonPos(int button){
     }
 }
 
-void DS4::DS4UpdateState(){
-    rc.read(buff, sizeof(buff)); //Lê os dados do controle
-
+bool DS4::DS4UpdateState(){
+    cout << "antes\n";
+    if(!(rc.read(buff, sizeof(buff)))) //Lê os dados do controle
+        return 0; 
     //////DEBUG/////
     /*for(int i=0; i<8; i++) 
         cout << (int)buff[i] << "  ";
     cout << endl;*/
-    
+
     int type = buff[6];   
     int value = buff[7];
     int status = buff[4]; 
@@ -70,6 +71,9 @@ void DS4::DS4UpdateState(){
             }
         }
     }
+    cout << "depois\n";
+
+    return 1;
 }
 
 bool DS4::checkIfPressed(int button){
@@ -90,6 +94,6 @@ bool DS4::checkIfPressed(int button){
 }
 
 DS4::~DS4(){
-    delete but;
+    delete [] but;
     rc.close();
 }
