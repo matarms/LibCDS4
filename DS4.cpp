@@ -34,7 +34,6 @@ int DS4::buttonPos(int button){
 }
 
 bool DS4::DS4UpdateState(){
-    cout << "antes\n";
     if(!(rc.read(buff, sizeof(buff)))) //Lê os dados do controle
         return 0; 
     //////DEBUG/////
@@ -71,7 +70,6 @@ bool DS4::DS4UpdateState(){
             }
         }
     }
-    cout << "depois\n";
 
     return 1;
 }

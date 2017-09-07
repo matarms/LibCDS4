@@ -32,7 +32,6 @@ int main(){
             cout << "OPTIONS pressed\n";
         if(control.checkIfPressed(PSN))
             cout << "PSN pressed\n";
-        cout << "presses\n";
     }
 
     cout << "saiu\n";
